@@ -9,6 +9,7 @@ output: html_document
 data(happy, package="productplots")
 head(happy)
 HAPPY <- readRDS("data/HAPPY.rds")
+HAPPY$HAPPY = as.factor(HAPPY$HAPPY)
 ```
 
 ## R Markdown
