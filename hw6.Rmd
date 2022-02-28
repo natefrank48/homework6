@@ -8,6 +8,7 @@ output: html_document
 ```{r setup, include=FALSE}
 data(happy, package="productplots")
 head(happy)
+HAPPY <- readRDS("data/HAPPY.rds")
 ```
 
 ## R Markdown
