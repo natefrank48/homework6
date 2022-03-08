@@ -33,11 +33,43 @@ happy1 =
   mutate(AGE = as.numeric(AGE), 
         HAPPY = as.factor(HAPPY), 
         SEX = as.factor(SEX), 
-       MARITAL = as.factor(MARITAL), 
+        MARITAL = as.factor(MARITAL),
+        FINRELA = as.factor(FINRELA),
+        HEALTH = as.factor(HEALTH),
+        PARTYID = as.factor(PARTYID),
+        POLVIEWS = as.factor(POLVIEWS),
         DRGREE = as.factor(DEGREE)) %>% 
-  mutate(DEGREE = factor(DEGREE, levels = c("LT HIGH SCHOOL", "HIGH SCHOOL", "JUNIOR COLLEGE", "BACHELOR", "GRADUATE")))
+          mutate(DEGREE = factor(DEGREE, levels = c("LT HIGH SCHOOL", "HIGH SCHOOL", "JUNIOR COLLEGE", "BACHELOR", "GRADUATE")))
+
+
+levels(happy1$MARITAL) = c("never married", "married", "separated", "divorced", "widowed")
+levels(happy1$FINRELA) = c("far below average","below average","average","above average","far above average")
+levels(happy1$HEALTH) = c("poor","fair","good","excellent")
+levels(happy1$PARTYID) = c("strong republican", "not str republican", "ind,near rep", "independent", "ind,near dem", "not str democrat", "strong democrat", "other party")
+levels(happy1$POLVIEWS) = c("extrmly conservative", "conservative","slghtly conservative","moderate","slightly liberal","liberal","extremely liberal")
+#levels(happy1$DEGREE) = c("LT HIGH SCHOOL", "HIGH SCHOOL", "JUNIOR COLLEGE", "BACHELOR", "GRADUATE")
 
 str(happy1)
+levels(happy1$HEALTH)
 
 ```
 
+
+
+```{r}
+#happiness by degree
+happy.degree = happy1 %>% 
+  group_by(DEGREE) %>% summarise(m.degree = mean(as.numeric(HAPPY), na.rm = TRUE))
+
+happy.degree %>% ggplot(aes(x = DEGREE, y = m.degree)) + geom_point()
+```
+
+
+```{r}
+#happiness by finacial relationship
+happy.finrela = happy1 %>% 
+  group_by(FINRELA) %>% summarise(m.finrela = mean(as.numeric(HAPPY), na.rm = TRUE))
+
+happy.finrela %>% ggplot(aes(x = FINRELA)) + geom_bar(aes(weight = m.finrela), position="dodge") +
+  labs(title="Happiness by Financial Relationship", y="Happiness")
+```
