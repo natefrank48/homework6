@@ -31,8 +31,6 @@ str(HAPPY)
 happy1 = 
  HAPPY %>% mutate(AGE = replace(AGE, AGE == "89 OR OLDER", 89)) %>% 
   mutate(AGE = as.numeric(AGE))
-
-str(happy1)
 ```
 
 ```{r}
@@ -41,32 +39,33 @@ happy1 = happy1 %>% mutate(SEX = as.factor(HAPPY))
 
 ```{r}
 happy1 = happy1 %>% mutate(MARITAL = as.factor(MARITAL)) %>%
-  mutate(MARITAL = factor(MARITAL, levels = c("never married", "married", "separated", "divorced", "widowed")))
+  mutate(MARITAL = factor(MARITAL, levels = c("NEVER MARRIED", "MARRIED", "SEPARATED", "DIVORCED", "WIDOWED")))
 ```
 
 ```{r}
 happy1 = happy1 %>% mutate(FINRELA = as.factor(FINRELA)) %>%
-  mutate(FINRELA = factor(FINRELA, levels = c("far below average","below average","average","above average","far above average")))
+  mutate(FINRELA = factor(FINRELA, levels = c("FAR BELOW AVERAGE","BELOW AVERAGE","AVERAGE","ABOVE AVERAGE","FAR ABOVE AVERAGE")))
 ```
 
 ```{r}
 happy1 = happy1 %>% mutate(HEALTH = as.factor(HEALTH)) %>%
-  mutate(HEALTH = factor(HEALTH, levels = c("poor","fair","good","excellent")))
+  mutate(HEALTH = factor(HEALTH, levels = c("POOR","FAIR","GOOD","EXCELLENT")))
 ```
 
 ```{r}
 happy1 = happy1 %>% mutate(PARTYID = as.factor(PARTYID)) %>%
-  mutate(PARTYID = factor(PARTYID, levels = c("strong republican", "not str republican", "ind,near rep", "independent", "ind,near dem", "not str democrat", "strong democrat", "other party")))
+  mutate(PARTYID = factor(PARTYID, levels = c("STRONG REPUBLICAN", "NOT STR REPUBLICAN", "IND,NEAR REP", "INDEPENDENT", "IND,NEAR DEM", "NOT STR DEMOCRAT", "STRONG DEMOCRAT", "OTHER PARTY")))
 ```
 
 ```{r}
 happy1 = happy1 %>% mutate(POLVIEWS = as.factor(POLVIEWS)) %>%
-  mutate(POLVIEWS = factor(POLVIEWS, levels = c("extrmly conservative", "conservative","slghtly conservative","moderate","slightly liberal","liberal","extremely liberal")))
+  mutate(POLVIEWS = factor(POLVIEWS, levels = c("EXTRMLY CONSERVATIVE", "CONSERVATIVE","SLIGHTLY CONSERVATIVE","MODERATE","SLIGHTLY LIBERAL","LIBERAL","EXTREMELY LIBERAL")))
 ```
 
 ```{r}
 happy1 = happy1 %>% mutate(DEGREE = as.factor(DEGREE)) %>%
   mutate(DEGREE = factor(DEGREE, levels = c("LT HIGH SCHOOL", "HIGH SCHOOL", "JUNIOR COLLEGE", "BACHELOR", "GRADUATE")))
+str(happy1)
 ```
 
 ```{r}
@@ -81,16 +80,16 @@ happy.degree %>% ggplot(aes(x = DEGREE)) + geom_bar(aes(weight = m.degree)) +
 The bar graph shows that happiness increases with a more advanced degree. The people who had bachelor and graduate degrees had an average happiness rating above a 2.25 on a 3 point scale, where as people with lt high school had the lowest happiness score. This trend makes sense because people with higher degrees can advance in their career more easily, and they most likely work in a specific field that they enjoy. The NA column has a happiness level near the lt high school level, so most of the NA column probably had a lower level of education.
 
 ```{r}
-#happiness by finacial relationship
+#happiness by financial relationship
 happy.finrela = happy1 %>% 
   group_by(FINRELA) %>% summarise(m.finrela = mean(as.numeric(HAPPY), na.rm = TRUE))
 
-happy.finrela %>% ggplot(aes(x = FINRELA)) + geom_bar(aes(weight = m.finrela), position="dodge") +
+happy.finrela %>% ggplot(aes(x = FINRELA)) + geom_bar(aes(weight = m.finrela)) +
   labs(title="Happiness by Financial Relationship", y="Happiness")
 ```
 
 
-The above graph shows the relationship between happiness level and financial status. We can see that people that has a financial status far above average actually are the least happy compare to the others, on the other hand, those whoes finacial relationship are far below average are the happest among others. Therefore we can conclude that having more money does not mean one has a high happiness level.
+The above graph shows the relationship between happiness level and financial status. We can see that people that has a financial status far above average actually are the least happy compare to the others, on the other hand, those whose financial relationship are far below average are the happiest among others. Therefore we can conclude that having more money does not mean one has a high happiness level.
 
 
 
