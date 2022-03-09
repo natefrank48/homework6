@@ -30,28 +30,44 @@ Bring all levels of factors into a sensible order. For marital you could e.g. or
 str(HAPPY)
 happy1 = 
  HAPPY %>% mutate(AGE = replace(AGE, AGE == "89 OR OLDER", 89)) %>% 
-  mutate(AGE = as.numeric(AGE), 
-        HAPPY = as.factor(HAPPY), 
-        SEX = as.factor(SEX), 
-        MARITAL = as.factor(MARITAL),
-        FINRELA = as.factor(FINRELA),
-        HEALTH = as.factor(HEALTH),
-        PARTYID = as.factor(PARTYID),
-        POLVIEWS = as.factor(POLVIEWS),
-        DRGREE = as.factor(DEGREE)) %>% 
-          mutate(DEGREE = factor(DEGREE, levels = c("LT HIGH SCHOOL", "HIGH SCHOOL", "JUNIOR COLLEGE", "BACHELOR", "GRADUATE")))
-
-
-levels(happy1$MARITAL) = c("never married", "married", "separated", "divorced", "widowed")
-levels(happy1$FINRELA) = c("far below average","below average","average","above average","far above average")
-levels(happy1$HEALTH) = c("poor","fair","good","excellent")
-levels(happy1$PARTYID) = c("strong republican", "not str republican", "ind,near rep", "independent", "ind,near dem", "not str democrat", "strong democrat", "other party")
-levels(happy1$POLVIEWS) = c("extrmly conservative", "conservative","slghtly conservative","moderate","slightly liberal","liberal","extremely liberal")
+  mutate(AGE = as.numeric(AGE))
 
 str(happy1)
 ```
 
+```{r}
+happy1 = happy1 %>% mutate(SEX = as.factor(HAPPY))
+```
 
+```{r}
+happy1 = happy1 %>% mutate(MARITAL = as.factor(MARITAL)) %>%
+  mutate(MARITAL = factor(MARITAL, levels = c("never married", "married", "separated", "divorced", "widowed")))
+```
+
+```{r}
+happy1 = happy1 %>% mutate(FINRELA = as.factor(FINRELA)) %>%
+  mutate(FINRELA = factor(FINRELA, levels = c("far below average","below average","average","above average","far above average")))
+```
+
+```{r}
+happy1 = happy1 %>% mutate(HEALTH = as.factor(HEALTH)) %>%
+  mutate(HEALTH = factor(HEALTH, levels = c("poor","fair","good","excellent")))
+```
+
+```{r}
+happy1 = happy1 %>% mutate(PARTYID = as.factor(PARTYID)) %>%
+  mutate(PARTYID = factor(PARTYID, levels = c("strong republican", "not str republican", "ind,near rep", "independent", "ind,near dem", "not str democrat", "strong democrat", "other party")))
+```
+
+```{r}
+happy1 = happy1 %>% mutate(POLVIEWS = as.factor(POLVIEWS)) %>%
+  mutate(POLVIEWS = factor(POLVIEWS, levels = c("extrmly conservative", "conservative","slghtly conservative","moderate","slightly liberal","liberal","extremely liberal")))
+```
+
+```{r}
+happy1 = happy1 %>% mutate(DEGREE = as.factor(DEGREE)) %>%
+  mutate(DEGREE = factor(DEGREE, levels = c("LT HIGH SCHOOL", "HIGH SCHOOL", "JUNIOR COLLEGE", "BACHELOR", "GRADUATE")))
+```
 
 ```{r}
 #happiness by degree
