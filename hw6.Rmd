@@ -88,3 +88,14 @@ happy.finrela = happy1 %>%
 happy.finrela %>% ggplot(aes(x = FINRELA)) + geom_bar(aes(weight = m.finrela), position="dodge") +
   labs(title="Happiness by Financial Relationship", y="Happiness")
 ```
+
+
+The above graph shows the relationship between happiness level and financial status. We can see that people that has a financial status far above average actually are the least happy compare to the others, on the other hand, those whoes finacial relationship are far below average are the happest among others. Therefore we can conclude that having more money does not mean one has a high happiness level.
+
+
+
+
+
+
+
+
