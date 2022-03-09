@@ -47,11 +47,8 @@ levels(happy1$FINRELA) = c("far below average","below average","average","above 
 levels(happy1$HEALTH) = c("poor","fair","good","excellent")
 levels(happy1$PARTYID) = c("strong republican", "not str republican", "ind,near rep", "independent", "ind,near dem", "not str democrat", "strong democrat", "other party")
 levels(happy1$POLVIEWS) = c("extrmly conservative", "conservative","slghtly conservative","moderate","slightly liberal","liberal","extremely liberal")
-#levels(happy1$DEGREE) = c("LT HIGH SCHOOL", "HIGH SCHOOL", "JUNIOR COLLEGE", "BACHELOR", "GRADUATE")
 
 str(happy1)
-levels(happy1$HEALTH)
-
 ```
 
 
@@ -61,9 +58,11 @@ levels(happy1$HEALTH)
 happy.degree = happy1 %>% 
   group_by(DEGREE) %>% summarise(m.degree = mean(as.numeric(HAPPY), na.rm = TRUE))
 
-happy.degree %>% ggplot(aes(x = DEGREE, y = m.degree)) + geom_point()
+happy.degree %>% ggplot(aes(x = DEGREE)) + geom_bar(aes(weight = m.degree)) +
+  labs(title="Happiness by Degree", y="Happiness")
 ```
 
+The bar graph shows that happiness increases with a more advanced degree. The people who had bachelor and graduate degrees had an average happiness rating above a 2.25 on a 3 point scale, where as people with lt high school had the lowest happiness score. This trend makes sense because people with higher degrees can advance in their career more easily, and they most likely work in a specific field that they enjoy. The NA column has a happiness level near the lt high school level, so most of the NA column probably had a lower level of education.
 
 ```{r}
 #happiness by finacial relationship
@@ -75,7 +74,7 @@ happy.finrela %>% ggplot(aes(x = FINRELA)) + geom_bar(aes(weight = m.finrela), p
 ```
 
 
-
+The above graph shows the relationship between happiness level and financial status. We can see that people that has a financial status far above average actually are the least happy compare to the others, on the other hand, those whoes finacial relationship are far below average are the happest among others. Therefore we can conclude that having more money does not mean one has a high happiness level.
 
 
 
