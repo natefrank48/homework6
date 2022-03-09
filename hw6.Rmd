@@ -73,3 +73,14 @@ happy.finrela = happy1 %>%
 happy.finrela %>% ggplot(aes(x = FINRELA)) + geom_bar(aes(weight = m.finrela), position="dodge") +
   labs(title="Happiness by Financial Relationship", y="Happiness")
 ```
+
+
+
+
+
+
+
+
+
+
+
