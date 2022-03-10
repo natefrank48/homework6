@@ -5,6 +5,8 @@ date: "2/28/2022"
 output: html_document
 ---
 
+link: https://github.com/natefrank48/homework6 
+
 ```{r setup, include=FALSE}
 library(tidyverse)
 
@@ -77,7 +79,7 @@ happy.degree %>% ggplot(aes(x = DEGREE)) + geom_bar(aes(weight = m.degree)) +
   labs(title="Happiness by Degree", y="Happiness")
 ```
 
-The bar graph shows that happiness increases with a more advanced degree. The people who had bachelor and graduate degrees had an average happiness rating above a 2.25 on a 3 point scale, where as people with lt high school had the lowest happiness score. This trend makes sense because people with higher degrees can advance in their career more easily, and they most likely work in a specific field that they enjoy. The NA column has a happiness level near the lt high school level, so most of the NA column probably had a lower level of education.
+(Nathan Frank) The bar graph shows that happiness increases with a more advanced degree. The people who had bachelor and graduate degrees had an average happiness rating above a 2.25 on a 3 point scale, where as people with lt high school had the lowest happiness score. This trend makes sense because people with higher degrees can advance in their career more easily, and they most likely work in a specific field that they enjoy. The NA column has a happiness level near the lt high school level, so most of the NA column probably had a lower level of education.
 
 ```{r}
 #happiness by financial relationship
@@ -89,7 +91,7 @@ happy.finrela %>% ggplot(aes(x = FINRELA)) + geom_bar(aes(weight = m.finrela)) +
 ```
 
 
-The above graph shows the relationship between happiness level and financial status. From the bar graph we can see that people whoes financial relationship is above average are the happiest and the average happiness level of those whoes financial status is far below average is only around 1.875. Therefore, we can conclude that higher happiness level means higher financial relatinpship and it does play a big role on one's happiness level. 
+(Yen Wang) The above graph shows the relationship between happiness level and financial status. From the bar graph we can see that people whoes financial relationship is above average are the happiest and the average happiness level of those whoes financial status is far below average is only around 1.875. Therefore, we can conclude that higher happiness level means higher financial relatinpship and it does play a big role on one's happiness level. 
 
 
 
